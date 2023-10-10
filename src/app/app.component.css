@@ -1,0 +1,22 @@
+h1 {
+    color:red
+}
+
+mat-sidenav-container {
+    height: auto;
+  }
+
+mat-sidenav {
+    width: auto;
+    background-color:plum;
+  }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }

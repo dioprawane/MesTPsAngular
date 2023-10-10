@@ -1,0 +1,34 @@
+
+<form ngForm (submit)="onSubmit(); assignmentForm.reset()" #assignmentForm class="form">
+
+    <mat-form-field>
+      <input matInput placeholder="Nom du devoir" [(ngModel)]="nomDevoir" name="nom" required>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Date de rendu</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="dateRendu" name="dateRendu" required>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <button mat-stroked-button 
+    color="primary"
+    [disabled]="!ajoutActive">Ajouter un devoir
+    </button>
+  
+  </form>
+  
+  <div *ngFor="let assignment of assignments"
+  [ngStyle]="{'color':assignment.rendu ? 'green':'red'}">
+  
+    <p appRendu *ngIf="assignment.rendu; else nonSoumis">
+      Devoir intitulé "{{assignment.nom}}" rendu le {{assignment.dateDeRendu}} rendu.
+    </p>
+  
+    <ng-template #nonSoumis>
+        <p>Le devoir intitulé "{{assignment.nom}}" à rendre le {{assignment.dateDeRendu}} n'a pas été rendu.</p>
+    </ng-template>
+  
+  </div>
