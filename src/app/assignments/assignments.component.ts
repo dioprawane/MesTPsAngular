@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Assignment } from './assignment.model';
+import { DatePipe } from '@angular/common';
 import { AppComponent } from '../app.component';
 
 @Component({
@@ -12,6 +13,7 @@ export class AssignmentsComponent implements OnInit {
   ajoutActive = false;
   nomDevoir = "";
   dateRendu = new Date;
+  
 
   constructor() { } 
 
