@@ -18,4 +18,47 @@ p {
 
 .example-spacer {
     flex: 1 1 auto;
+}
+
+table tr td {
+    border: 1px solid black;
   }
+  
+.rendu {
+    color:green;
+}
+  
+.nonRendu {
+    color:red;
+    border:2px dashed red;
+    background-color:yellow;
+}
+  
+#monParagraphe {
+    color:pink
+}
+  
+.container {
+    display:flex;
+    flex-direction: column;
+  }
+  
+.btnAjout {
+    align-self: auto;
+    margin: 5px;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+a {
+    text-align: center;
+    font-weight: bold;
+}
+
+h3 {
+    margin-left: 5px;
+}

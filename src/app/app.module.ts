@@ -12,16 +12,22 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatDrawer } from '@angular/material/sidenav';
+import { MatDrawerContainer } from '@angular/material/sidenav';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RenduDirective } from './shared/rendu.directive';
+import { NonRenduDirective } from './shared/non-rendu.directive';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { ListAssignmentsComponent } from './assignments/list-assignments/list-assignments.component';
 import { AddAssignmentsComponent } from './assignments/add-assignments/add-assignments.component';
 import { ChangeAssignmentsComponent } from './assignments/change-assignments/change-assignments.component';
 import { DeleteAssignmentsComponent } from './assignments/delete-assignments/delete-assignments.component';
 import { TestsDataComponent } from './assignments/tests-data/tests-data.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -30,12 +36,14 @@ import { TestsDataComponent } from './assignments/tests-data/tests-data.componen
   declarations: [
     AppComponent,
     RenduDirective,
+    NonRenduDirective,
     AssignmentsComponent,
     ListAssignmentsComponent,
     AddAssignmentsComponent,
     ChangeAssignmentsComponent,
     DeleteAssignmentsComponent,
-    TestsDataComponent
+    TestsDataComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +59,9 @@ import { TestsDataComponent } from './assignments/tests-data/tests-data.componen
     MatNativeDateModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

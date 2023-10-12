@@ -1,0 +1,19 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 300px;
+  height: 100%; /* Fait en sorte que .form prenne toute la hauteur disponible */
+  width: 100%; /* Fait en sorte que .form prenne toute la largeur disponible */
+}
+
+.butA {
+  margin: 5px;
+  margin-top: 100px;
+}
