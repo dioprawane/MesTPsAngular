@@ -5,11 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
-  title = 'Application de gestion de devoirs';
+export class AppComponent {
+  title = 'Mon application Angular sur les assignments !';
   nomProf = 'Michel Buffa';
   x = 3;
-  opened = false;
+  opened = true;
 
   drawer: any;
 

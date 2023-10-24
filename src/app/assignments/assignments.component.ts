@@ -1,64 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { Assignment } from './assignment.model';
+import { AssignmentsService } from '../shared/assignments.service';
 
 @Component({
   selector: 'app-assignments',
   templateUrl: './assignments.component.html',
   styleUrls: ['./assignments.component.css']
 })
+
 export class AssignmentsComponent implements OnInit {
   titre = "Formulaire d'ajout d'un devoir";
   ajoutActive = false;
   color = 'green';
   id="monParagraphe";
-  //boutonDesactive = true;
-  //nomDevoir = "";
-  //dateRendu = new Date;
-
-  // pour afficher tantot le formulaire,
-  // tantot la liste des assignments
-  formVisible = false;
+  assignments:Assignment[] = [];
   
   assignmentSelectionne?:Assignment;
 
-  //constructor() { } 
+  constructor(private assignmentService:AssignmentsService) { } 
 
   ngOnInit() {
-    console.log(" AVANT RENDU DE LA PAGE !");
-    /*setTimeout(() => {
-      this.ajoutActive = true;
-    }, 2000);*/
-    
+    //this.assignments = this.assignmentService.getAssignments();
+    this.getAssignments();
   }
 
-  /*onSubmit() {
-    const newAssignment = new Assignment();
-    newAssignment.nom = this.nomDevoir;
-    newAssignment.dateDeRendu = this.dateRendu;
-    newAssignment.rendu = false;
-
-    this.assignments.push(newAssignment);
-    //console.log(this.nomDevoir);
-    //event.preventDefault();
-  }*/
-
-  assignments: Assignment[] = [
-    {
-      nom:"T1 Web Components",
-      dateDeRendu: new Date('2023-09-17'),
-      rendu:true,
-    },
-    {
-      nom: "Devoir NodeJS",
-      dateDeRendu: new Date('2023-10-17'),
-      rendu:true,
-    },
-    {
-      nom: "Devoir MongoDB",
-      dateDeRendu: new Date('2023-01-17'),
-      rendu:false
-    },
-  ];
+  getAssignments() {
+    this.assignmentService.getAssignments().subscribe(assignments => this.assignments = assignments);
+  }
 
   getDescription() {
     return 'Je suis un sous composant';
@@ -74,13 +42,19 @@ export class AssignmentsComponent implements OnInit {
     this.assignmentSelectionne = a;
   }
 
-  onAddAssignmentBtnClick() {
-  this.formVisible = true;
-  }
+  /*onAddAssignmentBtnClick() {
+    //this.formVisible = true;
+  }*/
 
-  onNouvelAssignment(event:Assignment) {
-    this.assignments.push(event);
+  /*onNouvelAssignment(event:Assignment) {
+    //this.assignments.push(event);
+    this.assignmentService.addAssignment(event).subscribe(message => console.log(message));
+
     this.formVisible = false;
+  }*/
+
+  onDeleteAssignment(a:Assignment) {
+    this.assignmentService.deleteAssignment(a).subscribe(message => console.log(message));
   }
 
 

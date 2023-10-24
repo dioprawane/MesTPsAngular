@@ -3,39 +3,32 @@
   <button mat-icon-button (click)="drawer.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Mon application Angular sur les assignments !</span>
+  <h1>
+    <nav><a routerLink="/home">{{title}}</a></nav>
+  </h1>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon home-icon" aria-label="Example icon-button with heart icon">
+  <button mat-icon-button class="example-icon home-icon" aria-label="Example icon-button with heart icon" routerLink="/home">
     <mat-icon>home</mat-icon>
   </button>
-  <button mat-button>Connexion</button>
+  <button routerLink="/connexion" mat-button>Connexion</button>
 </mat-toolbar>
 
 <mat-sidenav-container>
 <mat-drawer-container class="example-container">
-  <mat-drawer #drawer mode="side" opened>
+  <mat-drawer #drawer mode="side">
       <mat-list>
-      <button color="primary" mat-icon-button class="example-icon home-icon" aria-label="Example icon-button with heart icon" routerLink="/list-devoirs">
+      <button color="primary" mat-icon-button class="example-icon home-icon" aria-label="Example icon-button with heart icon" routerLink="/home">
         <mat-icon>home</mat-icon>
       </button>
       </mat-list>
-        <button class="matButRaised" mat-raised-button color="primary" routerLink="/list-devoirs">Liste des devoirs</button>
-        <button class="matButRaised" mat-raised-button color="primary" href="/ajout-devoir" (click)="doSomething()">Ajout d'un devoir</button>
-        <button class="matButRaised" mat-raised-button color="primary" routerLink="/modification-devoir">Modification d'un devoir</button>
-        <button class="matButRaised" mat-raised-button color="primary" routerLink="/suppression-devoir">Suppression d'un devoir</button>
-        <button class="matButRaised" mat-raised-button color="primary" routerLink="/generation-donnees">Génération de données de test</button>
+        <button class="matButRaised" mat-raised-button color="primary" routerLink="/list" (click)="doSomething()">Liste des devoirs</button>
+        <button class="matButRaised" mat-raised-button color="primary" routerLink="/add" (click)="doSomething()">Ajout d'un devoir</button>
+        <button class="matButRaised" mat-raised-button color="primary" routerLink="/change">Modification d'un devoir</button>
+        <button class="matButRaised" mat-raised-button color="primary" routerLink="/delete">Suppression d'un devoir</button>
+        <button class="matButRaised" mat-raised-button color="primary" routerLink="/tests">Génération de données de test</button>
   </mat-drawer>
   <mat-drawer-content>
-    <app-assignments></app-assignments>
+    <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
 </mat-sidenav-container>
-
-
-
-
-
-
-
-
-

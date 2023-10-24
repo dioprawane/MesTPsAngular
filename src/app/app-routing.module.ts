@@ -8,17 +8,9 @@ import { DeleteAssignmentsComponent } from './assignments/delete-assignments/del
 import { TestsDataComponent } from './assignments/tests-data/tests-data.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
 
-const routes: Routes = [
-  { path: 'list-devoirs', component:ListAssignmentsComponent /* Votre composant pour la liste des devoirs */ },
-  { path: 'ajout-devoir', component:AddAssignmentsComponent /* Votre composant pour l'ajout d'un devoir */ },
- // { path: 'modification-devoir', component:ChangeAssignmentsComponent /* Votre composant pour la modification d'un devoir */ },
-  { path: 'modification-devoir', component:AssignmentsComponent /* Votre composant pour la modification d'un devoir */ },
-  { path: 'suppression-devoir', component:DeleteAssignmentsComponent /* Votre composant pour la suppression d'un devoir */ },
-  { path: 'generation-donnees', component:TestsDataComponent /* Votre composant pour la génération de données de test */ },
-];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),MatButtonModule],
+  imports: [MatButtonModule],
   exports: [RouterModule]
 })
 

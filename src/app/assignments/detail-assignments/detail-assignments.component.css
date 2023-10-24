@@ -1,0 +1,10 @@
+#bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-left: 5px;
+}
+
+.container {
+    min-height: 300px;
+}

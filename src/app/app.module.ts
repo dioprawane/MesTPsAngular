@@ -14,8 +14,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
-import { MatDrawer } from '@angular/material/sidenav';
-import { MatDrawerContainer } from '@angular/material/sidenav';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,10 +25,23 @@ import { AddAssignmentsComponent } from './assignments/add-assignments/add-assig
 import { ChangeAssignmentsComponent } from './assignments/change-assignments/change-assignments.component';
 import { DeleteAssignmentsComponent } from './assignments/delete-assignments/delete-assignments.component';
 import { TestsDataComponent } from './assignments/tests-data/tests-data.component';
+import { DetailAssignmentsComponent } from './assignments/detail-assignments/detail-assignments.component';
 import { FooterComponent } from './footer/footer.component';
+import { AssignmentsService } from './shared/assignments.service';
+import { LoggingService } from './shared/logging.service';
+import { RouterModule, Routes } from '@angular/router';
 
-
-
+const routes: Routes = [
+  { path: 'home', component: AssignmentsComponent},
+  { path: ' ', component: AssignmentsComponent},
+  { path: 'connexion', component: AssignmentsComponent},
+  { path: 'list', component: ListAssignmentsComponent},
+  { path: 'add', component:AddAssignmentsComponent },
+  { path: 'change', component: ChangeAssignmentsComponent },
+  { path: 'delete', component: DeleteAssignmentsComponent },
+  { path: 'tests', component: TestsDataComponent },
+  { path: 'assignment/:id', component: DetailAssignmentsComponent },
+];
 
 @NgModule({
   declarations: [
@@ -43,6 +54,7 @@ import { FooterComponent } from './footer/footer.component';
     ChangeAssignmentsComponent,
     DeleteAssignmentsComponent,
     TestsDataComponent,
+    DetailAssignmentsComponent,
     FooterComponent,
   ],
   imports: [
@@ -62,8 +74,9 @@ import { FooterComponent } from './footer/footer.component';
     MatListModule,
     MatCheckboxModule,
     MatCardModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AssignmentsService, LoggingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

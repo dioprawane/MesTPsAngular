@@ -1,23 +1,40 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit /*EventEmitter, Output*/ } from '@angular/core';
 import { Assignment } from '../assignment.model';
+import { AssignmentsService } from 'src/app/shared/assignments.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-assignments',
   templateUrl: './add-assignments.component.html',
   styleUrls: ['./add-assignments.component.css']
 })
-export class AddAssignmentsComponent {
+export class AddAssignmentsComponent implements OnInit {
   // Evenement qu'on enverra au père avec la soumission
   // du formulaire
-  @Output() nouvelAssignment = new EventEmitter<Assignment>();
+  //@Output() nouvelAssignment = new EventEmitter<Assignment>();
 
   // pour le formulaire
-  nomDevoir=""
-  dateDeRendu?:Date=undefined;
+  nomDevoir:string="";
+  dateRendu:Date;
+
+  constructor(private assignmentsService:AssignmentsService, private router:Router) { }
+
+  ngOnInit(): void {
+    
+  }
 
   onSubmit(event:any) {
+    const newAssignment = new Assignment();
+    newAssignment.nom = this.nomDevoir;
+    newAssignment.dateDeRendu = this.dateRendu;
+    newAssignment.rendu = false;
+    newAssignment.id = Math.floor(Math.random() * 1000) + 1;
 
-    let a = new Assignment();
+    this.assignmentsService.addAssignment(newAssignment).subscribe(message => console.log(message));
+
+    this.router.navigate(['list']);
+
+    /*let a = new Assignment();
     a.nom = this.nomDevoir;
     if(this.dateDeRendu)
       a.dateDeRendu = this.dateDeRendu;
@@ -25,7 +42,7 @@ export class AddAssignmentsComponent {
     a.rendu = false;
 
     //this.assignments.push(a);
-    this.nouvelAssignment.emit(a);
+    this.nouvelAssignment.emit(a);*/
   }
 
 }
