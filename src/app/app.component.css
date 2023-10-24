@@ -44,3 +44,32 @@ a {
   display: flex;
   flex-direction: column;
 }
+
+.ButLogin {
+  margin-left: 20px;
+  color: white;
+}
+
+a {
+  color: rgb(239, 218, 218);
+  font-size: auto;
+}
+
+.login-text {
+  margin: 20px;
+  font-size: auto;
+  color: white;
+  font-family: inherit; /* utilise la même famille de polices que le bouton "Connexion" */
+  font-size: inherit;  /* utilise la même taille de police que le bouton "Connexion" */
+}
+
+.ButLogin {
+  color: white;
+  font-family: inherit; /* utilise la même famille de polices que le bouton "Connexion" */
+  font-size: inherit;  /* utilise la même taille de police que le bouton "Connexion" */
+}
+
+/* Ceci cible spécifiquement le contenu du bouton .ButLogin */
+.ButLogin button, .ButLogin a, .ButLogin span {
+  color: white;
+}

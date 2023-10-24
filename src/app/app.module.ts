@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +30,10 @@ import { DetailAssignmentsComponent } from './assignments/detail-assignments/det
 import { FooterComponent } from './footer/footer.component';
 import { AssignmentsService } from './shared/assignments.service';
 import { LoggingService } from './shared/logging.service';
+import { AuthService  } from './shared/auth.service';
+import { authGuard } from './shared/auth.guard';
 import { RouterModule, Routes } from '@angular/router';
+import { EditAssignmentsComponent } from './assignments/edit-assignments/edit-assignments.component';
 
 const routes: Routes = [
   { path: 'home', component: AssignmentsComponent},
@@ -41,6 +45,11 @@ const routes: Routes = [
   { path: 'delete', component: DeleteAssignmentsComponent },
   { path: 'tests', component: TestsDataComponent },
   { path: 'assignment/:id', component: DetailAssignmentsComponent },
+  { 
+    path: 'assignment/:id/edit', 
+    component: EditAssignmentsComponent ,
+    canActivate: [authGuard]
+  },
 ];
 
 @NgModule({
@@ -56,6 +65,7 @@ const routes: Routes = [
     TestsDataComponent,
     DetailAssignmentsComponent,
     FooterComponent,
+    EditAssignmentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,9 +84,10 @@ const routes: Routes = [
     MatListModule,
     MatCheckboxModule,
     MatCardModule,
+    MatSlideToggleModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AssignmentsService, LoggingService],
+  providers: [AssignmentsService, LoggingService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

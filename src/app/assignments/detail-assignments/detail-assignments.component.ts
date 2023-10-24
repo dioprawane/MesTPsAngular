@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Assignment } from '../assignment.model';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-detail-assignments',
@@ -13,7 +14,12 @@ export class DetailAssignmentsComponent implements OnInit {
   /*@Input()*/  assignmentTransmis?: Assignment;
   @Output() deleteAssignment = new EventEmitter<Assignment>();
 
-  constructor(private assignmentsService: AssignmentsService, private router:Router, private route: ActivatedRoute) { }
+  constructor(
+    private assignmentsService: AssignmentsService, 
+    private router:Router, 
+    private route: ActivatedRoute,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
     this.getAssignment();
@@ -37,17 +43,25 @@ export class DetailAssignmentsComponent implements OnInit {
     this.router.navigate(['/list']);
   }
 
-  onAssignmentRendu() {
-    if (this.assignmentTransmis) {
-        this.assignmentTransmis.rendu = true;
+onAssignmentRendu() {
+  if (this.assignmentTransmis) {
+    this.assignmentTransmis.rendu = true;
 
-        this.assignmentsService.updateAssignment(this.assignmentTransmis).subscribe((message) => {
-            console.log(message);
-            // Naviguer vers "/list" une fois la mise à jour effectuée
-            this.router.navigate(['/list']);
-        });
-    }
+    this.assignmentsService.updateAssignment(this.assignmentTransmis).subscribe((message) => {
+        console.log(message);
+        // Naviguer vers "/list" une fois la mise à jour effectuée
+        this.router.navigate(['/list']);
+    });
+  }
 }
 
+onClickEdit() {
+  this.router.navigate(['/assignment', this.assignmentTransmis.id, 'edit'],
+  {queryParams: {nom: this.assignmentTransmis.nom}, fragment: 'edition'});
+}
+
+isAdmin() : boolean {
+  return this.authService.loggedIn;
+}
 
 }

@@ -1,0 +1,26 @@
+.container {
+    margin: 10px;
+    min-height: 300px;
+  }
+
+
+h1 {
+    text-align: center;
+    margin: 25px;
+    font-size: 3em;
+    font-style: italic;
+    color:blueviolet;
+}
+
+.form {
+    display: flex;
+    margin: 10px;
+}
+
+.bnt {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 100px;
+    align-self: center;
+    width: 200px;
+}

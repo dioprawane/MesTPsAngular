@@ -12,6 +12,7 @@
       (change)="onAssignmentRendu()">
       Devoir rendu
     </mat-checkbox>
+    <button mat-stroked-button color="primary" (click)="onClickEdit()" [disabled]="!isAdmin()">Edit</button>
     <button mat-flat-button color="warn" (click)="onDeleteAssignment()">Supprime le devoir</button>
     </mat-card-actions>
     </mat-card-content>
