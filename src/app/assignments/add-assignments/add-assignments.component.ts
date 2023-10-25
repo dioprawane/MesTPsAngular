@@ -2,6 +2,7 @@ import { Component, OnInit /*EventEmitter, Output*/ } from '@angular/core';
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-add-assignments',
@@ -16,10 +17,20 @@ export class AddAssignmentsComponent implements OnInit {
   // pour le formulaire
   nomDevoir:string="";
   dateRendu:Date;
+  afficheMessage: boolean = false;
+  currentUser: any = null;
 
-  constructor(private assignmentsService:AssignmentsService, private router:Router) { }
+  constructor(private assignmentsService:AssignmentsService, private authService: AuthService , private router:Router) { }
 
   ngOnInit(): void {
+    this.authService.userObservable$.subscribe(user => {
+      this.currentUser = user;
+
+      // Vérifier si l'utilisateur est connecté
+      if(!this.currentUser) {
+        this.router.navigate(['/home']);
+      }
+    });
     
   }
 
@@ -34,15 +45,6 @@ export class AddAssignmentsComponent implements OnInit {
 
     this.router.navigate(['list']);
 
-    /*let a = new Assignment();
-    a.nom = this.nomDevoir;
-    if(this.dateDeRendu)
-      a.dateDeRendu = this.dateDeRendu;
-
-    a.rendu = false;
-
-    //this.assignments.push(a);
-    this.nouvelAssignment.emit(a);*/
   }
 
 }

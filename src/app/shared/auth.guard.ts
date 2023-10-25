@@ -9,7 +9,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   let router = inject(Router);
 
   // si ça renvoie true, alors on peut activer la route
-  return authService.isAdmin().then(authentifie => {
+  /*return authService.isAdmin().then(authentifie => {
     if (authentifie) {
       console.log("Vous êtes admin, navigation autorisée !");
       return true;
@@ -18,6 +18,21 @@ export const authGuard: CanActivateFn = (route, state) => {
       router.navigate(['/list']);
       return false;
     }
-  });
+  });*/
 
-}
+
+  if (authService.isLogged() && authService.isAdmin()) {
+    console.log("Vous êtes admin, navigation autorisée !");
+    return true;
+  } else if (authService.isLogged() && !authService.isAdmin())  {
+    console.log("Vous n'êtes pas admin, navigation refusée  !");
+    router.navigate(['/list']);
+    return false;
+  } else {
+    console.log("Vous n'êtes pas connecté !");
+    alert("Vous devez vous connecter pour accéder à cette page.\nIdentifiants de connexion :\n- Admin : login : admin, mot de passe : passwordAdmin\n- User : login : user1, mot de passe : password1");
+    router.navigate(['/home']);
+    return false;
+  }
+
+};

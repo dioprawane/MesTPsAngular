@@ -78,3 +78,10 @@ a {
 h3 {
     margin-left: 5px;
 }
+
+h1 {
+    text-align: center;
+    margin: 10px;
+    color:red;
+    font-weight: bold;
+}

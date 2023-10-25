@@ -2,6 +2,7 @@ import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-list-assignments',
@@ -11,13 +12,23 @@ import { Router } from '@angular/router';
 export class ListAssignmentsComponent implements OnInit {
 
   assignments:Assignment[] = [];
+  afficheMessage: boolean = false;
+  currentUser: any = null;
   
   assignmentSelectionne?:Assignment;
 
-  constructor(private assignmentService: AssignmentsService, private router:Router) { }
+  constructor(private assignmentService: AssignmentsService, private authService: AuthService, private router:Router) { }
 
   ngOnInit(): void {
     this.getAssignments();
+    this.authService.userObservable$.subscribe(user => {
+      this.currentUser = user;
+
+      // Vérifier si l'utilisateur est connecté
+      if(!this.currentUser) {
+        this.router.navigate(['/home']);
+      }
+    });
   }
   //Recuperer de assignments.component.ts
   getAssignments() {

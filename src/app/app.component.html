@@ -10,8 +10,16 @@
   <button mat-icon-button class="example-icon home-icon" aria-label="Example icon-button with heart icon" routerLink="/home">
     <mat-icon>home</mat-icon>
   </button>
-  <mat-slide-toggle class="ButLogin" color="primary" (click)="login()"><button mat-button>Login</button></mat-slide-toggle>
-  <button routerLink="/connexion" mat-button>Connexion</button>
+
+  <!-- Si l'utilisateur est connecté, affichez son nom -->
+  <span *ngIf="currentUser!=null">
+    {{currentUser.login}}
+    <button routerLink="/connexion" mat-button disabled="currentUser!=null">Connecté</button>
+    <button routerLink="/connexion" mat-button (click)="logOut()">Se déconnecter</button>
+  </span>
+   <!-- Si l'utilisateur n'est PAS connecté, affichez le bouton de connexion -->
+  <button *ngIf="currentUser==null" routerLink="/connexion" mat-button>Connexion</button>
+  
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -22,13 +30,15 @@
         <mat-icon>home</mat-icon>
       </button>
       </mat-list>
-        <button class="matButRaised" mat-raised-button color="primary" routerLink="/list" (click)="doSomething()">Liste des devoirs</button>
-        <button class="matButRaised" mat-raised-button color="primary" routerLink="/add" (click)="doSomething()">Ajout d'un devoir</button>
-        <button class="matButRaised" mat-raised-button color="primary" routerLink="/change">Modification d'un devoir</button>
-        <button class="matButRaised" mat-raised-button color="primary" routerLink="/delete">Suppression d'un devoir</button>
-        <button class="matButRaised" mat-raised-button color="primary" routerLink="/tests">Génération de données de test</button>
+        <button class="matButRaised" mat-raised-button color="primary" (click)="navigateTo('/list')" (click)="doSomething()">Liste des devoirs</button>
+        <button class="matButRaised" mat-raised-button color="primary" (click)="navigateTo('/add')" (click)="doSomething()">Ajout d'un devoir</button>
+        <button class="matButRaised" mat-raised-button color="primary" (click)="navigateTo('/change')">Modification d'un devoir</button>
+        <button class="matButRaised" mat-raised-button color="primary" (click)="navigateTo('/delete')">Suppression d'un devoir</button>
+        <button class="matButRaised" mat-raised-button color="primary" (click)="navigateTo('/tests')">Génération de données de test</button>
   </mat-drawer>
   <mat-drawer-content>
+    <!-- Afficher le message si l'utilisateur n'est pas connecté -->
+    <h1 *ngIf="afficheMessage" class="alert-message">Vous n'êtes pas connecté, veuillez vous connecter</h1>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

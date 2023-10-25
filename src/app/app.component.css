@@ -73,3 +73,10 @@ a {
 .ButLogin button, .ButLogin a, .ButLogin span {
   color: white;
 }
+
+h1 {
+  text-align: center;
+  margin: 10px;
+  color:red;
+  font-weight: bold;
+}

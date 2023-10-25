@@ -1,14 +1,79 @@
-.a {
-    min-height: 300px;
+
+p {
+    margin: 10px;
 }
 
+.rendu {
+    color: green;
+}
+
+.non-rendu {
+    color: red;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+table tr td {
+    border: 1px solid black;
+  }
+  
+.rendu {
+    color:green;
+}
+  
+.nonRendu {
+    color:red;
+    border:2px dashed red;
+    background-color:yellow;
+}
+  
+#monParagraphe {
+    color:pink
+}
+  
 .container {
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
-  padding: 10px;
-  width: 250px;
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
+    display:flex;
+    flex-direction:column;
+    height: 100vh;
+  }
+
+.AjouerBnt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+  
+.btnAjout {
+    align-self: auto;
+    margin: 5px;
+    width: 200px;
+}
+
+
+h2 {
+    text-align: center;
+    margin: 25px;
+    font-size: 3em;
+    font-style: italic;
+    color:blueviolet;
+}
+
+h3 {
+    margin-left: 5px;
+}
+
+
+#bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-left: 5px;
 }

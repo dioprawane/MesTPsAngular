@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Assignment } from './assignment.model';
 import { AssignmentsService } from '../shared/assignments.service';
+import { AuthService } from '../shared/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assignments',
@@ -14,14 +16,21 @@ export class AssignmentsComponent implements OnInit {
   color = 'green';
   id="monParagraphe";
   assignments:Assignment[] = [];
+  currentUser: any = null;
+  afficheMessage: boolean = false;
+
   
   assignmentSelectionne?:Assignment;
 
-  constructor(private assignmentService:AssignmentsService) { } 
+  constructor(private assignmentService:AssignmentsService, private authService: AuthService, private router: Router) { } 
 
   ngOnInit() {
     //this.assignments = this.assignmentService.getAssignments();
     this.getAssignments();
+    this.authService.userObservable$.subscribe(user => {
+      this.currentUser = user;
+    });
+    console.log("currentUser de app.components : ", this.currentUser);
   }
 
   getAssignments() {
@@ -53,9 +62,25 @@ export class AssignmentsComponent implements OnInit {
     this.formVisible = false;
   }*/
 
+  doNothing() {
+    console.log("doNothing");
+  }
+
   onDeleteAssignment(a:Assignment) {
     this.assignmentService.deleteAssignment(a).subscribe(message => console.log(message));
   }
+
+  navigateTo(route: string) {
+    if(this.currentUser!=null) {
+      this.router.navigate([route]);
+      this.afficheMessage = false;
+    } else {
+      this.router.navigate(['/home']);
+      this.afficheMessage = true;
+    }
+  }
+
+  
 
 
 }

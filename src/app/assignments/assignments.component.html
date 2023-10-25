@@ -1,19 +1,23 @@
 <main class="container">
   <h2>Welcome to your assignments management application !</h2>
+  
+  <!-- Afficher le message si l'utilisateur n'est pas connecté -->
+  <h1 *ngIf="afficheMessage" class="alert-message">Vous n'êtes pas connecté, veuillez vous connecter</h1>
+
   <div class="AjouerBnt">
-    <button routerLink="/add" mat-raised-button color="accent"
+    <button (click)="navigateTo('/add')" mat-raised-button color="accent"
                 class="btnAjout">Ajout Assignment
     </button>
-    <button routerLink="/delete" mat-raised-button color="accent"
+    <button (click)="navigateTo('/delete')" mat-raised-button color="accent"
                 class="btnAjout">Delete Assignment
     </button>
-    <button routerLink="/list" mat-raised-button color="accent"
+    <button (click)="navigateTo('/list')" mat-raised-button color="accent"
                 class="btnAjout">List Assignment
     </button>
-    <button routerLink="/change" mat-raised-button color="accent"
+    <button (click)="navigateTo('/change')" mat-raised-button color="accent"
                 class="btnAjout">Change Assignment
     </button>
-    <button routerLink="/tests" mat-raised-button color="accent"
+    <button (click)="navigateTo('/tests')" mat-raised-button color="accent"
                 class="btnAjout">Generating test data
     </button>
   </div>

@@ -34,16 +34,18 @@ import { AuthService  } from './shared/auth.service';
 import { authGuard } from './shared/auth.guard';
 import { RouterModule, Routes } from '@angular/router';
 import { EditAssignmentsComponent } from './assignments/edit-assignments/edit-assignments.component';
+import { LoginComponent } from './assignments/login/login.component';
 
 const routes: Routes = [
   { path: 'home', component: AssignmentsComponent},
   { path: ' ', component: AssignmentsComponent},
-  { path: 'connexion', component: AssignmentsComponent},
+  { path: 'connexion', component: LoginComponent},
   { path: 'list', component: ListAssignmentsComponent},
   { path: 'add', component:AddAssignmentsComponent },
   { path: 'change', component: ChangeAssignmentsComponent },
   { path: 'delete', component: DeleteAssignmentsComponent },
   { path: 'tests', component: TestsDataComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'assignment/:id', component: DetailAssignmentsComponent },
   { 
     path: 'assignment/:id/edit', 
@@ -66,6 +68,7 @@ const routes: Routes = [
     DetailAssignmentsComponent,
     FooterComponent,
     EditAssignmentsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

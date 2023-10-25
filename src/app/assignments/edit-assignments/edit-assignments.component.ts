@@ -14,6 +14,8 @@ export class EditAssignmentsComponent implements OnInit {
   nomAssignment!: string;
   dateDeRendu!: Date;
 
+  //source: string = 'list';  // valeur par défaut
+
   constructor(private assignmentsService:AssignmentsService, private router:Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -55,6 +57,6 @@ export class EditAssignmentsComponent implements OnInit {
         // navigation vers la home page
         this.router.navigate(['/list']);
       });
-  } 
+  }
 
 }

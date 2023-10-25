@@ -13,6 +13,7 @@ export class DetailAssignmentsComponent implements OnInit {
 
   /*@Input()*/  assignmentTransmis?: Assignment;
   @Output() deleteAssignment = new EventEmitter<Assignment>();
+  
 
   constructor(
     private assignmentsService: AssignmentsService, 
@@ -61,7 +62,7 @@ onClickEdit() {
 }
 
 isAdmin() : boolean {
-  return this.authService.loggedIn;
+  return this.authService.isAdmin();
 }
 
 }
