@@ -9,6 +9,7 @@ https://github.com/dioprawane/MesTPsAngular.git
 Puis pour ce qui concerne ce point : 
 - [x] Gestion des droits :
   - Si on n'est pas logué on ne peut ni voir le détail, ni éditer
+  
 J'étais parti sur l'idée que si on n'est pas logé, on ne peut rien faire que voir les options possibles sans pouvoir y naviguer.
 Et partout où on souhaite naviguer, un message de demande de connexion est affiché. Il faut se connecter pour découvrir les contenus.
 Puis pour avoir les identifications, essayez de vous connecter avec n'importe quels identifiants et vous aurez en alerte les vrais login/password pour chaque rôle.
