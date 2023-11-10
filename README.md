@@ -2,7 +2,7 @@
 # Angular : rendu n°2
 Repository où déposer le projet n°2 Angular
 
-Voici le lien de mon repository git que j'ai testé dans le "Codespace" :
+Voici le lien de mon repository git que j'ai testé dans mon "Codespace" comme je n'ai pu le faire dans celui de votre repository pour vérifier :
 
 https://github.com/dioprawane/MesTPsAngular.git
 
