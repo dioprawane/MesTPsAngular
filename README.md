@@ -2,9 +2,18 @@
 # Angular : rendu n°2
 Repository où déposer le projet n°2 Angular
 
+## Commentaires
 Voici le lien de mon repository git que j'ai testé dans mon "Codespace" comme je n'ai pu le faire dans celui de votre repository pour vérifier :
 
 https://github.com/dioprawane/MesTPsAngular.git
+
+Puis pour ce qui concerne ce point : 
+- [x] Gestion des droits :
+  - Si on n'est pas logué on ne peut ni voir le détail, ni éditer
+  
+J'étais parti sur l'idée que si on n'est pas logé, on ne peut rien faire que voir les options.
+Et partout où on souhaite naviguer, un message de demande de connexion est affiché.
+Puis pour avoir les logins, essayez de vous connecter avec n'importe quels identifiants et vous aurez en alerte les vrais login/password pour chaque rôle.
 
 ### DIOP :
 
