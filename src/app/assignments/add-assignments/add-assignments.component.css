@@ -8,9 +8,12 @@ html, body {
   display: flex;
   flex-direction: column;
   height: auto;
-  min-height: 300px;
   height: 100%; /* Fait en sorte que .form prenne toute la hauteur disponible */
   width: 100%; /* Fait en sorte que .form prenne toute la largeur disponible */
+}
+
+.add {
+  min-height: 450px;
 }
 
 .butA {

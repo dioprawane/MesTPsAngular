@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -87,6 +88,7 @@ const routes: Routes = [
     MatListModule,
     MatCheckboxModule,
     MatCardModule,
+    MatMenuModule,
     MatSlideToggleModule,
     RouterModule.forRoot(routes)
   ],

@@ -3,6 +3,9 @@
     min-height: 300px;
   }
 
+  .edit {
+    min-height: 430px;
+}
 
 h1 {
     text-align: center;

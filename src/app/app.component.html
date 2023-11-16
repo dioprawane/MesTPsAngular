@@ -11,12 +11,17 @@
     <mat-icon>home</mat-icon>
   </button>
 
-  <!-- Si l'utilisateur est connecté, affichez son nom -->
-  <span *ngIf="currentUser!=null">
-    {{currentUser.login}}
-    <button routerLink="/connexion" mat-button disabled="currentUser!=null">Connecté</button>
-    <button routerLink="/connexion" mat-button (click)="logOut()">Se déconnecter</button>
+
+  <span *ngIf="currentUser">
+    <!-- Ce bouton déclenche le menu déroulant -->
+    <button mat-button [matMenuTriggerFor]="menu">{{currentUser.login}}</button>
+    <!-- Définition du menu déroulant -->
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/connexion" disabled>Connecté en tant que {{currentUser.login}}</button>
+      <button mat-menu-item routerLink="/connexion" (click)="logOut()">Se déconnecter</button>
+    </mat-menu>
   </span>
+  
    <!-- Si l'utilisateur n'est PAS connecté, affichez le bouton de connexion -->
   <button *ngIf="currentUser==null" routerLink="/connexion" mat-button>Connexion</button>
   
@@ -43,3 +48,6 @@
   </mat-drawer-content>
 </mat-drawer-container>
 </mat-sidenav-container>
+
+<!--Ajout footer-->
+<app-footer></app-footer>

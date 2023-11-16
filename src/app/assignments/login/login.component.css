@@ -8,6 +8,10 @@
     border-radius: 8px;
 }
 
+.login {
+    min-height: 430px;
+}
+
 h2 {
     text-align: center;
     margin-bottom: 30px;
@@ -55,3 +59,5 @@ button {
 button:hover {
     background-color: #0056b3;  /* une teinte de bleu légèrement plus foncée au survol */
 }
+
+
