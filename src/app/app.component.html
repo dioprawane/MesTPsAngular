@@ -49,5 +49,7 @@
 </mat-drawer-container>
 </mat-sidenav-container>
 
-<!--Ajout footer-->
-<app-footer></app-footer>
+<!-- Utilisez ngClass pour appliquer conditionnellement une classe en fonction de l'URL -->
+<div [ngClass]="{'f-home': isHomePage(), 'f': !isHomePage()}">
+  <app-footer></app-footer>
+</div>

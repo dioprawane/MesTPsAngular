@@ -71,6 +71,11 @@ export class AppComponent implements OnInit {
     this.currentUser = null;
     this.router.navigate(['/login']); // Redirigez vers la page d'accueil après la déconnexion.
   }
+
+  // Cette méthode détermine si l'URL actuelle est la page d'accueil
+  isHomePage(): boolean {
+    return this.router.url === '/';
+  }
   
 
 }
